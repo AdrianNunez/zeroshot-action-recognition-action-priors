@@ -62,7 +62,7 @@ def main(config):
     # This is the main configuration object
     training_params = {
         # Name of the split created
-        'split': 'new_R',
+        'split': 'split_name',
         # Label: 'verb' or 'object'
         'label': 'object',
         # Execute a quick run: 1 batch for training and 2 videos for test
