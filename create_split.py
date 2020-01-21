@@ -21,7 +21,7 @@ with open(variables_file) as f:
 # ============================================================
 # VARIABLES TO MODIFY
 # ============================================================
-split = 'new_NR'
+split = 'name_of_split'
 recipe_split = False
 percentage_of_classes_for_test = 0.2
 action_ind_file = 'original_action_idx.txt'

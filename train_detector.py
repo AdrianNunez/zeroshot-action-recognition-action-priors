@@ -51,8 +51,6 @@ os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 # VARIABLES TO MODIFY
 # ============================================================
 variables_file = 'variables.json'
-# Name of the experiment (e.g. split_R_verb_detector)
-num_exp = 'name_of_the_experiment'
 # Choose the GPU you want to use
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 # ============================================================
@@ -62,9 +60,9 @@ def main(config):
     # This is the main configuration object
     training_params = {
         # Name of the split created
-        'split': 'split_name',
+        'split': 'name_of_split',
         # Label: 'verb' or 'object'
-        'label': 'object',
+        'label': 'verb',
         # Execute a quick run: 1 batch for training and 2 videos for test
         'toy_execution': False,
         # If the evaluation is already done and saved, whether to repeat it
@@ -139,6 +137,11 @@ def main(config):
         'visualisation_mode': False
     }
 
+    # Name of the experiment (e.g. split_R_verb_detector)
+    exp_name = 'split_{}_{}_detector'.format(
+        training_params['split'], training_params['label']
+    )
+
     root_path = config['split_path'] + training_params['split'] + '/'
 
     if training_params['label'] == 'verb':
@@ -180,10 +183,10 @@ def main(config):
     # Path to folders to save plots and checkpoints
     checkpoints_folder = (config['project_folder'] +
         config['checkpoints_folder'] + 
-        '{}/{}/'.format(training_params['split'], num_exp)
+        '{}/{}/'.format(training_params['split'], exp_name)
     )
     plots_folder = (config['project_folder'] + config['plots_folder'] +
-        '{}/{}/'.format(training_params['split'], num_exp)
+        '{}/{}/'.format(training_params['split'], exp_name)
     )
 
     # Create any necessary folder
@@ -352,7 +355,7 @@ def main(config):
                               metrics=metric_list)
                 model.summary()
 
-                print('Exp {}, run {}'.format(num_exp, run))
+                print('Exp {}, run {}'.format(exp_name, run))
 
                 apply_cw = training_params['apply_class_weighting'] 
                 # Optional warmup training
@@ -391,6 +394,7 @@ def main(config):
                 callbacks = [c, e]
 
                 train_time = time.time()
+                steps = None
                 if training_params['toy_execution']:
                     steps = 1
                 history = model.fit_generator(generator=train_generator,
@@ -460,7 +464,7 @@ def main(config):
         print('Loaded the checkpoint at {}'.format(save_best_weights_file))
     
         class_list = classes_train
-        print('Exp {}, run {}'.format(num_exp, run))
+        print('Exp {}, run {}'.format(exp_name, run))
         res_dict = dict()
         for mode in ['train', 'val', 'test']:
             # If the evaluation was already saved and 'redo_evaluation' is not
@@ -583,14 +587,15 @@ def main(config):
             plot_confusion_matrix(
                 cm_by_video, class_list,
                 run_folder + '_normalized_by_video_{}_{}_{}.pdf'.format(
-                    mode,num_exp,run),
+                    mode, exp_name, run),
                 normalize=True,
                 title='Normalized confusion matrix for {} set'.format(mode),
                 cmap='coolwarm'
             )
             plot_confusion_matrix(
                 cm_by_video, class_list,
-                run_folder + '_by_video_{}_{}_{}.pdf'.format(mode,num_exp,run),
+                run_folder + '_by_video_{}_{}_{}.pdf'.format(
+                    mode, exp_name, run),
                 normalize=False, 
                 title='Confusion matrix for {} set'.format(mode),
                 cmap='coolwarm'
@@ -640,8 +645,10 @@ def main(config):
         gc.collect()
     
     plot_training_info(plots_folder,
-                       num_exp, 
-                       config['metrics'] + ['f1_metric'], True, histories)
+                       exp_name, 
+                       config['metrics'] + ['f1_metric'],
+                       True,
+                       histories)
     # ===============================================================
     # SHOW THE AVERAGED RESULTS
     # ===============================================================
