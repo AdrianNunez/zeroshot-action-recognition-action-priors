@@ -18,29 +18,13 @@ output_path = config['project_folder'] + 'google_prior/'
 # ============================================================
 
 # API keys --------------------------------------------
-api_keys = ['AIzaSyAfhLm7GRsXloAYvQX2Jt-Of4DZ8rlkohY',
-            'AIzaSyBiZDGdoaTWLRsBCSEFq9sBw-r3mwSofMs', #2
-            'AIzaSyDoDo6pcE-cWzJfT8iX2hC3FoMhtJFDkAI', #3
-            'AIzaSyBu1_q1WZQuXef4pnxinniHgJKgHYW4ECw', #4
-            'AIzaSyBDxzFjdYV_7nB7-RjUIceXGEIfkD4r9Ro', #5
-            'AIzaSyDaxT0DSKVqdhtdE38xh0sblDLyk1BgLUE', #6
-            'AIzaSyDH4j6qk8MvlruPIrkc2oDUlvtSjN8OE5w', #7
-            'AIzaSyBwsekqg2wy9DoIDQZ6IedFEn3j-PP_daI', #8
-            'AIzaSyDfQjudv9xn0mXAlMUKWXjnabKFbztNTto', #9
-            'AIzaSyBhSQg40gnrPszVzqj_MM_hFcQAMr_PaBw' #10
+api_keys = [
+    # add API keys
 ]
 
 # Google Custom Search --------------------------------
-cse_ids = ['010214684576467338892:lxad28ubpio', 
-           '010214684576467338892:ooqw49cp6k8', #2
-           '010214684576467338892:jikgluzghkb', #3
-           '010214684576467338892:npflnztcgwr',  #4
-           '010214684576467338892:u9mwvdsxof2', #5
-           '010214684576467338892:665pegcyrff', #6
-           '010214684576467338892:6zidjxsxhgs', #7
-           '010214684576467338892:4go7dmog1fc', #8
-           '010214684576467338892:uziohcdrcic', #9
-           '010214684576467338892:0rib1ygwqg8' #10
+cse_ids = [
+    # add Google Custom Search IDs
 ]
 
 # Function to perform a google search
