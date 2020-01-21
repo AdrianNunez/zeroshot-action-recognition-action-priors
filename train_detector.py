@@ -18,14 +18,10 @@ import shutil
 import json
 import random
 from keras import backend as K
-#from keras.models import Sequential, Layer
-#from keras.layers import Dense
 from keras.objectives import categorical_crossentropy
 from keras.models import model_from_json
 from keras.optimizers import Adam, SGD, RMSprop
 from keras.applications import VGG16
-#from adam import Adam as CustomAdam
-from keras.utils import multi_gpu_model
 from keras.models import Model, load_model
 from keras.utils.np_utils import to_categorical
 from keras.callbacks import ReduceLROnPlateau, ModelCheckpoint, EarlyStopping
@@ -44,36 +40,31 @@ from matplotlib.ticker import MaxNLocator
 from matplotlib.patches import Rectangle
 from scipy.spatial.distance import euclidean
 from keras.callbacks import ModelCheckpoint
-sys.path.insert(0, os.path.abspath('.') + '/keras2/')
-from custom_keras.layers.custom_convolutional_recurrent import FixedConvLSTM2D
 
-from clr_callback import CyclicLR
-#from AdamW import AdamW
 from utils import *
 from model import *
 from data import *
 
-variables_file = 'variables.json'
-num_exp = 'split3_5_verb_detector'
-
-# TRAINING CONFIGURATION
-multi_gpu = False
-exception_vars = ['conv5', 'fc6', 'fc7', 'fc8-action']
-
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
-if multi_gpu:
-	os.environ["CUDA_VISIBLE_DEVICES"]="2,3,4"
-else:
-	os.environ["CUDA_VISIBLE_DEVICES"]="4"
-        
+
+# ============================================================
+# VARIABLES TO MODIFY
+# ============================================================
+variables_file = 'variables.json'
+# Name of the experiment (e.g. split_R_verb_detector)
+num_exp = 'name_of_the_experiment'
+# Choose the GPU you want to use
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
+# ============================================================
+
 def main(config): 
     use_data_augmentation = True
     # This is the main configuration object
     training_params = {
         # Name of the split created
-        'split': 'R',
+        'split': 'new_R',
         # Label: 'verb' or 'object'
-        'label': 'verb',
+        'label': 'object',
         # Execute a quick run: 1 batch for training and 2 videos for test
         'toy_execution': False,
         # If the evaluation is already done and saved, whether to repeat it
@@ -95,8 +86,6 @@ def main(config):
         'skip_connect': False,
         # Number of timesteps
         'sequence_length': 25,
-        'use_imagenet_init': True,
-        'use_pretrained_model': False,
         'learning_rate': 0.0001,
         'batch_size': 16,
         # Number of layers to freeze, starting from 0
@@ -122,7 +111,7 @@ def main(config):
         'non_uniform_sampling': False,
         # Normalise input to the ConvLSTM with L2 Normalisation
         'convlstm_normalise_input': False,
-        'dropout_rate': 0.,#[0.5,0.5],
+        'dropout_rate': 0.,
         'convlstm_dropout_rate': 0.,
         'convlstm_recurrent_dropout_rate': 0.,
         'spatial_dropout_rate': 0.,

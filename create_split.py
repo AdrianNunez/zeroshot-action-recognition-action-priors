@@ -230,14 +230,6 @@ def load_labels(path):
 verb_dict = load_labels(config['project_folder'] + 'original_verb_idx.txt')
 obj_dict = load_labels(config['project_folder'] + 'original_noun_idx.txt')
 
-def create_link(old, new):
-    dic = dict()
-    for new_key in new.keys():
-        new_idx = new[new_key]
-        old_idx = old[new_key]
-        dic[old_idx] = new_idx
-    return dic
-
 _train_verbs = sorted(list(train_verbs))
 _train_objects = sorted(list(train_objects))
 inv_train_verbs = dict(zip(_train_verbs,range(1,len(_train_verbs)+1)))
@@ -274,8 +266,8 @@ with open('{}test.txt'.format(root_path), 'w') as f:
     for i in range(len(test_X)):
         f.write('{} {} {} {}\n'.format(test_X[i],
                                         test_y[i]+1,
-                                        test_verbs[i]+1,
-                                        test_objects[i]+1))
+                                        test_verbs[i],
+                                        test_objects[i]))
 
 save_labels(root_path + 'train_verbs.txt', _train_verbs, inv_train_verbs)
 save_labels(root_path + 'train_objects.txt', _train_objects, inv_train_objects)
@@ -292,16 +284,16 @@ with open('{}train.txt'.format(root_path), 'w') as f:
         num_samples_train += 1
         f.write('{} {} {} {}\n'.format(train_X[i],
                                         train_y[i]+1,
-                                        train_verbs[i]+1,
-                                        train_objects[i]+1))
+                                        train_verbs[i],
+                                        train_objects[i]))
 
 with open('{}val.txt'.format(root_path), 'w') as f:
     for i in val_index:
         num_samples_val += 1
         f.write('{} {} {} {}\n'.format(train_X[i],
                                         train_y[i]+1,
-                                        train_verbs[i]+1,
-                                        train_objects[i]+1))
+                                        train_verbs[i],
+                                        train_objects[i]))
 
 s = 'Num samples train: {}, val: {}, test: {}'.format(
     num_samples_train, num_samples_val, num_samples_test)
