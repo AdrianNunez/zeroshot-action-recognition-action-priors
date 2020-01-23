@@ -9,9 +9,10 @@ This repository contains the following files:
 * **create_cookbook_prior.py**: takes the scrapped Cookbook recipes and creates the Cookbook prior.
 * **create_google_prior.py**: creates the google prior.
 * **create_phrasefinder_prior.py**: creates the phrasefinder prior. Requires Python3, use requirements_py3.txt.
-* **create_split.py**: creates a new split.
+* **create_split.py**: creates a new split and its corresponding perfect prior.
 * **data.py**: scripts related to data management (used by the training scripts, mainly).
 * **model.py**: deploys the detectors.
+* **objects.txt**: dictionary of the final considered objects.
 * **original_action_idx.txt**: original action dictionary of EGTEA Gaze+. Used to create new splits.
 * **original_noun_idx.txt**: original object dictionary of EGTEA Gaze+. Used to create new splits.
 * **original_verb_idx.txt**: original verb dictionary of EGTEA Gaze+. Used to create new splits.
@@ -20,7 +21,7 @@ This repository contains the following files:
 * **train_detector.py**: script to train the verb and object detectors.
 * **utils.py**: utils of the script to train the detectors.
 * **variables.json**: configuration json.
-
+* **verbs.txt**: dictionary of the final considered verbs.
 ________
 
 ### Step by step
