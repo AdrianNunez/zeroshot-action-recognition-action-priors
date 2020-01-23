@@ -4,8 +4,8 @@ If you find the code useful for your research, please, cite our paper.
 
 This repository contains the following files:
 
-* **action_inferece.py**: script to infer actions.
-* **compute_action_results_per_class.py**: generates a csv file of the results per class per experiment.
+* **action_inferece.py**: script to infer actions (with and without priors, all are used). Results are stored in csv format within the split path.
+* **compute_action_results_per_class.py**: generates a csv file of the results per class per experiment. Results are stored in csv format within the split path.
 * **create_cookbook_prior.py**: takes the scrapped Cookbook recipes and creates the Cookbook prior.
 * **create_google_prior.py**: creates the google prior.
 * **create_phrasefinder_prior.py**: creates the phrasefinder prior. Requires Python3, use requirements_py3.txt.
@@ -20,6 +20,8 @@ This repository contains the following files:
 * **train_detector.py**: script to train the verb and object detectors.
 * **utils.py**: utils of the script to train the detectors.
 * **variables.json**: configuration json.
+
+________
 
 ### Step by step
 
@@ -90,5 +92,5 @@ python compute_action_results_per_class.py
 
 * Splits: [[R split](https://drive.google.com/file/d/1D1dc6GjHHnKYhls9qOWZq-OCaeYvybWm/view?usp=sharing)][[NR split](https://drive.google.com/file/d/1aECI87Hfdl8onTWewYQ8RuFBfZKDrVeH/view?usp=sharing)]
 * Saved models: [[R split verb detector](https://drive.google.com/file/d/1gNvSBC599n3hoE1YtoHf8HrW27IhC5WL/view?usp=sharing)][[R split object detector](https://drive.google.com/file/d/1wKH0MXm3cw_aR5eoe7doclREIhMO7DnN/view?usp=sharing)][[NR split verb detector](https://drive.google.com/file/d/1lPR1d7ZIlmmXl3t5_izD_bN56RFm7kDa/view?usp=sharing)][[NR split object detector](https://drive.google.com/file/d/1pKBNI72oxNigH5AscOPdhnyOuKB-mFMC/view?usp=sharing)]
-* [[Scrapped Cookbook dataset](https://drive.google.com/file/d/1sb5GgGz5gurlLBNc_CHrVGRa-jX_ynrG/view?usp=sharing]
+* [[Scrapped Cookbook dataset](https://drive.google.com/file/d/1sb5GgGz5gurlLBNc_CHrVGRa-jX_ynrG/view?usp=sharing)]
 * Action priors: [[Cookbook](https://drive.google.com/file/d/162WrjuAggDiFyfwDVicqqp7bRRcGwLwn/view?usp=sharing)][[Google](https://drive.google.com/file/d/1K5GY5SSDTlFlRbqytMm05CE-YukLBKsh/view?usp=sharing)][[Phrasefinder](https://drive.google.com/file/d/1jHz8GpJt05IYriR3WmcxmMeccig_2BJz/view?usp=sharing)]

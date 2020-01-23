@@ -1,0 +1,106 @@
+Inspect/Read recipe 1
+Open fridge 2
+Take eating_utensil 3
+Cut tomato 4
+Turn on faucet 5
+Put eating_utensil 6
+Open cabinet 7
+Take condiment_container 8
+Cut cucumber 9
+Operate stove 10
+Close fridge 11
+Cut carrot 12
+Put condiment_container 13
+Cut onion 14
+Open drawer 15
+Take plate 16
+Take bowl 17
+Put bowl 18
+Put trash,trash_container 19
+Put plate 20
+Cut bell_pepper 21
+Put cooking_utensil 22
+Take paper_towel 23
+Move Around bacon 24
+Open condiment_container 25
+Wash eating_utensil 26
+Spread condiment,bread,eating_utensil 27
+Turn off faucet 28
+Put pan 29
+Take cooking_utensil 30
+Put lettuce 31
+Move Around patty 32
+Put pot 33
+Close cabinet 34
+Put bread 35
+Take bread 36
+Close condiment_container 37
+Open fridge_drawer 38
+Wash hand 39
+Put tomato 40
+Take seasoning_container 41
+Take cup 42
+Divide/Pull Apart lettuce 43
+Put cup 44
+Take pot 45
+Clean/Wipe counter 46
+Take bread_container 47
+Take tomato 48
+Take pan 49
+Move Around pan 50
+Wash cutting_board 51
+Put bread_container 52
+Take sponge 53
+Take lettuce 54
+Take onion 55
+Put sponge 56
+Divide/Pull Apart paper_towel 57
+Open dishwasher 58
+Take cheese_container 59
+Take oil_container 60
+Put seasoning_container 61
+Take cucumber 62
+Wash pan 63
+Take bell_pepper 64
+Divide/Pull Apart onion 65
+Put cutting_board 66
+Mix mixture,eating_utensil 67
+Take tomato_container 68
+Put cheese 69
+Move Around eating_utensil 70
+Put bell_pepper 71
+Pour oil,oil_container,pan 72
+Take pasta_container 73
+Cut lettuce 74
+Put tomato_container 75
+Wash bowl 76
+Cut olive 77
+Close drawer 78
+Pour condiment,condiment_container,salad 79
+Wash pot 80
+Mix pasta 81
+Open bread_container 82
+Take grocery_bag 83
+Take cheese 84
+Pour seasoning,seasoning_container,salad 85
+Mix egg 86
+Pour water,faucet,pot 87
+Put paper_towel 88
+Put cucumber 89
+Compress sandwich 90
+Put cheese_container 91
+Put onion 92
+Crack egg 93
+Take cutting_board 94
+Open oil_container 95
+Squeeze washing_liquid,sponge 96
+Operate microwave 97
+Close fridge_drawer 98
+Wash strainer 99
+Move Around bowl 100
+Move Around pot 101
+Put grocery_bag 102
+Take egg 103
+Open cheese_container 104
+Close oil_container 105
+Put oil_container 106

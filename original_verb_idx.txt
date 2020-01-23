@@ -1,0 +1,19 @@
+Inspect/Read 1
+Open 2
+Take 3
+Cut 4
+Turn_on 5
+Put 6
+Operate 7
+Close 8
+Move Around 9
+Wash 10
+Spread 11
+Turn_off 12
+Divide/Pull Apart 13
+Clean/Wipe 14
+Mix 15
+Pour 16
+Compress 17
+Crack 18
+Squeeze 19

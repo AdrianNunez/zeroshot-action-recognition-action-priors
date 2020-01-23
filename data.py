@@ -73,7 +73,7 @@ def load_labels(config, training_params, mode, data_file, class_file,
                 load_indices=False):
     class_to_int = get_classes(class_file)
     int_to_class = {v: k for k, v in class_to_int.items()}
-    
+
     labels, indices = [], []
     with open(data_file, 'r') as f:
         content = f.readlines()
@@ -109,6 +109,8 @@ def num_sequences(config, training_params, mode, phase, data_file):
     Output:
     * Integer: number of stacks in the given set.
     '''
+    # Used in case of oversampling
+    labels = []
     nb_videos = 0
     with open(data_file, 'r') as f:
         content = f.readlines()
@@ -171,7 +173,7 @@ def prepare_dataset(config, training_params, data_file, mode, phase):
                 label = verb
             elif training_params['label'] == 'object':
                 label = object_code            
-            X.append(config['data_folder'] + folder)
+            X.append(config['images_folder'] + folder)
             Y.append(int(label)-1)
 
     if (
@@ -235,19 +237,12 @@ def load_sequence_from_video(config, training_params, phase,
             training_params['use_data_augmentation'] and
             training_params['random_corner_cropping']
         ):
-            if training_params['use_flow']:
-                seq_elem = np.zeros(shape=tuple(config['flow_shape']) + (2,),
-                                    dtype=np.float32)
-            else:
-                seq_elem = np.zeros(shape=tuple(config['image_shape']) + (3,),
-                                    dtype=np.float32)
+            
+            seq_elem = np.zeros(shape=tuple(config['image_shape']) + (3,),
+                                dtype=np.float32)
         elif training_params['resize_input']:
-            if training_params['use_flow']:
-                seq_elem = np.zeros(shape=tuple(config['input_shape']) + (2,),
-                                    dtype=np.float32)
-            else:
-                seq_elem = np.zeros(shape=tuple(config['input_shape']) + (3,),
-                                    dtype=np.float32)
+            seq_elem = np.zeros(shape=tuple(config['input_shape']) + (3,),
+                                dtype=np.float32)
 
        
         img = cv2.imread(images[ind])
@@ -272,22 +267,14 @@ def load_sequence_from_video(config, training_params, phase,
             training_params['use_data_augmentation'] and
             training_params['random_corner_cropping']
         ):
-            if training_params['use_flow']:
-                img_x = cv2.resize(img_x, tuple(config['input_shape']))
-                img_y = cv2.resize(img_y, tuple(config['input_shape']))
-            else: 
-                img = cv2.resize(img, tuple(config['input_shape']))
+            img = cv2.resize(img, tuple(config['input_shape']))
         if (
             phase == 'evaluation' and not (
                 training_params['use_data_augmentation'] and
                 training_params['random_corner_cropping']
             )
         ):
-            if training_params['use_flow']:
-                img_x = cv2.resize(img_x, tuple(config['input_shape']))
-                img_y = cv2.resize(img_y, tuple(config['input_shape']))
-            else: 
-                img = cv2.resize(img, tuple(config['input_shape']))
+            img = cv2.resize(img, tuple(config['input_shape']))
 
         sequence.append(img)
 
@@ -300,7 +287,7 @@ def load_data(config,
               element):
 
     images = glob.glob(config['images_folder'] +
-                        element[len(config['data_folder']):] + '/img*')       
+                        element[len(config['images_folder']):] + '/img*')       
     images.sort()
     return images
 
@@ -364,10 +351,7 @@ def load_gaze_plus_sequences(config, mode, data_file, training_params):
                 training_params['random_corner_cropping']
             ):  
                 
-                if training_params['use_flow']:
-                    shape = config['flow_shape']
-                else:
-                    shape = config['image_shape']
+                shape = config['image_shape']
                 scale = config['crop_scales'][1]
                 crop_size = (int(shape[0]*scale), int(shape[1]*scale))
                 center_x = shape[1] // 2
@@ -445,8 +429,6 @@ class BatchGenerator(Sequence):
             images = load_data(self.config, folder)
             
             video_masks = None
-            if self.training_params['att_option']:
-                video_masks = self.masks[videoname]
 
             res = load_sequence_from_video(self.config, self.training_params,
                                          'training', self.mode, images,
@@ -457,7 +439,7 @@ class BatchGenerator(Sequence):
                     self.config['project_folder'] + '{}/{}/{}/{}/'.format(
                     self.training_params['debug_folder'], self.mode,
                     self.epoch_nb, videoname
-                )
+                ))
                 if not os.path.exists(save_path):
                     os.makedirs(save_path)
 

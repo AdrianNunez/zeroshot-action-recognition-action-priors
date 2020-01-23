@@ -1,0 +1,46 @@
+{
+    "project_folder": "",
+    "images_folder": "rgb/",
+    "checkpoints_folder": "checkpoints/",
+    "plots_folder": "plots/",
+
+    "split_path": "split_",
+    "train_file": "train.txt",
+    "val_file": "val.txt",
+    "test_file": "test.txt",
+
+    "train_actions_file": "train_actions.txt",
+    "test_actions_file": "test_actions.txt",
+
+    "train_verbs_file": "train_verbs.txt",
+    "train_objects_file": "train_objects.txt",
+
+    "val_verbs_file": "val_verbs.txt",
+    "val_objects_file": "val_objects.txt",
+
+    "test_verbs_file": "test_verbs.txt",
+    "test_objects_file": "test_objects.txt",
+
+    "objects_file": "objects.txt",
+    "verbs_file": "verbs.txt",
+    "actions_file": "action_idx.txt",
+
+    "perfect_prior": "perfect_prior.json",
+
+    "cookbook_4gram_frequencies": "Cookbook_4gram/action_frequencies.json",
+    "cookbook_4gram": "Cookbook_4gram/action_prior.json",
+
+    "google_prior": "google_prior/action_priors.json",
+    "google_action_frequencies": "google_prior/unnormalised_action_priors.json",
+    
+    "phrasefinder_action_frequencies": "phrasefinder_prior_/frequencies.json",
+    "phrasefinder_prior": "phrasefinder_prior/action_prior.json",
+    
+    "image_shape": [480,640],
+    "input_shape": [224,224],
+
+    "crop_positions": ["c", "tl", "tr", "bl", "br"],
+    "crop_scales": [1, 0.875, 0.75, 0.65625],
+
+    "metrics": ["loss", "accuracy"]
+}
