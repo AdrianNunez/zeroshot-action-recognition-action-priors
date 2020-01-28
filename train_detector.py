@@ -88,7 +88,7 @@ def main(config):
         'batch_size': 16,
         # Number of layers to freeze, starting from 0
         # 142 to freeze everything except for the last conv block
-        # None would set all layers as trainable
+        # 0 would set all layers as trainable
         # -1 to freeze all
         'last_layer_to_freeze_conv': 142,
         'optimizer': 'adam',

@@ -226,25 +226,6 @@ def load_sequence_from_video(config, training_params, phase,
     val = random.uniform(0.5, 1.5)
     # For each selected frame do
     for ind in inds:
-        # If original shape is needed
-        if (
-            phase == 'training' and
-            #mode == 'train' and
-            training_params['use_data_augmentation'] and
-            training_params['random_corner_cropping']
-        ) or (
-            phase == 'evaluation' and
-            training_params['use_data_augmentation'] and
-            training_params['random_corner_cropping']
-        ):
-            
-            seq_elem = np.zeros(shape=tuple(config['image_shape']) + (3,),
-                                dtype=np.float32)
-        elif training_params['resize_input']:
-            seq_elem = np.zeros(shape=tuple(config['input_shape']) + (3,),
-                                dtype=np.float32)
-
-       
         img = cv2.imread(images[ind])
         # Random lighting
         if (
