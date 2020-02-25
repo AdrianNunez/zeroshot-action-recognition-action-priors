@@ -218,7 +218,7 @@ def execute_run(run,
             if not obj in class_confusions[int_to_actions[batch_y]]['objects']:
                 class_confusions[int_to_actions[batch_y]]['objects'][obj] = 0.
             class_confusions[int_to_actions[batch_y]]['objects'][obj] += 1
-        
+    
     predictions = np.asarray(predictions)
     ground_truth = np.asarray(ground_truth)
 
@@ -234,20 +234,17 @@ def execute_run(run,
     f1_by_video = f1_score(
         ground_truth,
         predictions,
-        average='macro',
-        labels=original_classes
+        average='macro'
     )
     precision_by_video = precision_score(
         ground_truth,
         predictions,
-        average='macro',
-        labels=original_classes
+        average='macro'
     )
     recall_by_video = recall_score(
         ground_truth,
         predictions,
-        average='macro',
-        labels=original_classes
+        average='macro'
     )
 
     video_dict['run_{}'.format(run)]['evaluation'] = dict()
@@ -372,35 +369,11 @@ def run_inference(config):
         'runs': 3,
         # Number of timesteps
         'sequence_length': 25,
-        # Number of layers to freeze, starting from 0
-        # 142 to freeze everything except for the last conv block
-        # None would set all layers as trainable
-        # -1 to freeze all
-        #'last_layer_to_freeze_conv': 142,
-        # Number of hidden states used in the ConvLSTM, i.e., number of 
-        # output channels
-        #'num_convlstms': 1,
-        #'convlstm_hidden': 256,
-        #'convlstm_add_initial_state': False,
-        #'apply_conv_betweenconvlstm': False,
-        #'apply_conv_afterconvlstm': False,
-        #'last_layer_to_freeze': 0,
         'non_uniform_sampling': False,
-        # Normalise input to the ConvLSTM with L2 Normalisation
-        #'convlstm_normalise_input': False,
-        #'dropout_rate': 0.,
-        #'convlstm_dropout_rate': 0.,
-        #'convlstm_recurrent_dropout_rate': 0.,
-        #'spatial_dropout_rate': 0.,
-        #'use_average_pool': True,
         'use_data_augmentation': use_data_augmentation,
         'random_horizontal_flipping': True,
         'random_corner_cropping': True,
         'random_lighting': False,
-        # Add a 1x1 conv after the last conv block but before the non local
-        # block in order to reduce the number of channels (ch)
-        #'add_1x1conv': True,
-        #'add_1x1conv_ch': 256,
         'min_frames': -1,
         # Activates debug mode: inputs to the network are saved in the folder
         # pointed out by 'debug_folder' below
