@@ -99,7 +99,7 @@ tqdm==4.31.1
 typing==3.6.6
 unwiki==0.1.0
 uritemplate==3.0.0
-urllib3==1.24.1
+urllib3==1.24.2
 Werkzeug==0.14.1
 wrapt==1.11.2
 XlsxWriter==1.0.5
