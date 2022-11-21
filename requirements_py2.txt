@@ -88,7 +88,7 @@ soupsieve==1.9.4
 subprocess32==3.5.1
 tb-nightly==1.14.0a20190301
 tensorboard==1.13.1
-tensorflow==1.13.1
+tensorflow==2.9.3
 tensorflow-estimator==1.13.0
 tensorflow-hub==0.6.0
 termcolor==1.1.0
