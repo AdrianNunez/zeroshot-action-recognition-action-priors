@@ -2,6 +2,8 @@
 
 If you find the code useful for your research, please, cite our paper.
 
+Núñez-Marcos, A., Azkune, G., Agirre, E., López-de-Ipiña, D., & Arganda-Carreras, I. (2020, June). Using external knowledge to improve zero-shot action recognition in egocentric videos. In International Conference on Image Analysis and Recognition (pp. 174-185). Cham: Springer International Publishing.
+
 This repository contains the following files:
 
 * **action_inferece.py**: script to infer actions (with and without priors, all are used). Results are stored in csv format within the split path.
