@@ -63,7 +63,7 @@ pbr==4.0.3
 Pillow==5.2.0
 plotly==4.1.1
 pluggy==0.7.1
-protobuf==3.7.1
+protobuf==3.18.3
 psutil==5.4.5
 py==1.8.0
 pyasn1==0.4.7
